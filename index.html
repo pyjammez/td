@@ -24,13 +24,20 @@
         const ctx = canvas.getContext('2d');
         const CANVAS_WIDTH = canvas.width = 600;
         const CANVAS_HEIGHT = canvas.height = 600;
+        const pre = document.getElementsByTagName('pre')[0];
         var raf = {};
+
+        function appendCodeToPre(classes) {
+            classes.forEach(obj => {
+                pre.insertAdjacentHTML('beforeend', '\n\n'+obj.toString());
+            });
+        }
 
         function startGame(name) {
             cancelAnimationFrame(raf)
             ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            window[name]();
             document.getElementsByTagName('pre')[0].innerHTML = window[name].toString();
+            window[name]();
         }
 
         var customNavHtml = Object.keys(window).filter(name => /script_\d/.test(name)).map(name => {

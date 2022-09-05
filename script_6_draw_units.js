@@ -20,6 +20,8 @@ function script_6_draw_units() {
     img2.onload = function(){
         ctx.drawImage(img2, 300, 200);
     }
+
+    appendCodeToPre([Script6Unit, Spider, CodepenSpider]);
 }
 
 // I should change to classes now, but they have to be unique per script.
