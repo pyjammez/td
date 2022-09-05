@@ -1,0 +1,28 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+header {
+    background: #cbcbc6;
+    padding: 10px;
+}
+nav {
+    min-width: 200px;
+    background: #dfe8eb;
+}
+nav a {
+    display: block;
+    margin: 10px;
+    cursor: pointer;
+}
+#canvas {
+    border: 5px solid #000;
+    width: 600px;
+    height: 600px;
+}
+.flex {
+    display: flex;
+}
+pre {
+    margin: 10px;
+}

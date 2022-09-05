@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<title>TD Evolution</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>Welcome to my journey in game development.</header>
+    
+    <div class="flex">
+        <nav></nav>
+        <canvas id="canvas"></canvas>
+        <pre></pre>
+    </div>
+
+    <script src="script_1_welcome_screen.js"></script>
+    <script src="script_2_move_object.js"></script>
+    <script src="script_3_varying_speed.js"></script>
+    <script src="script_4_several_objects.js"></script>
+    <script src="script_5_diagonal_movement.js"></script>
+    <script src="script_6_draw_units.js"></script>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const CANVAS_WIDTH = canvas.width = 600;
+        const CANVAS_HEIGHT = canvas.height = 600;
+        var raf = {};
+
+        function startGame(name) {
+            cancelAnimationFrame(raf)
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            window[name]();
+            document.getElementsByTagName('pre')[0].innerHTML = window[name].toString();
+        }
+
+        var customNavHtml = Object.keys(window).filter(name => /script_\d/.test(name)).map(name => {
+            let parts = name.split('_');
+            parts.shift();
+            let number = parts.shift();
+            let pascalCaseName = parts.map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+            return `<a onclick="startGame('${name}')">${number}. ${pascalCaseName}</a>`;
+        });
+
+        document.getElementsByTagName('nav')[0].innerHTML = customNavHtml.join('');
+    </script>
+</body>
+</html>
